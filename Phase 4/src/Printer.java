@@ -33,6 +33,7 @@ public class Printer {
     }
 
     public String printFunction(VFunction func){
+        dataFunc = "";
         VInstr[] funcBody = func.body;
         Visitor visit = new Visitor();
         //System.out.println(func.ident + ":\n");
