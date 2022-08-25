@@ -43,7 +43,7 @@ public class Printer {
         dataFunc += ident + "sw $fp -8($sp)\n";
         dataFunc += ident + "move $fp $sp\n";
         dataFunc += ident + "subu $sp $sp " + Integer.toString((func.stack.out + func.stack.local + 2)*4) + "\n";
-        dataFunc += ident + "sw $r -4($fp)\n";
+        dataFunc += ident + "sw $ra -4($fp)\n";
         for(VCodeLabel label : func.labels){
             System.out.println(label.instrIndex + ": " + label.ident);
         }
@@ -89,7 +89,7 @@ public class Printer {
 
         ending += "_error:\n";
         ending += ident + "li $v0 4   # syscall: print string\n";
-        ending += ident + "syscall";
+        ending += ident + "syscall\n";
         ending += ident + "li $v0 10   # syscall: exit\n";
         ending += ident + "syscall\n\n";
 
